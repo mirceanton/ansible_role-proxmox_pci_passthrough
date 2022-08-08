@@ -1,0 +1,9 @@
+---
+- name: Load VFIO modules
+  lineinfile:
+    path: /etc/modules
+    line: "{{ item }}"
+  loop: "{{ vfio_modules }}"
+  notify:
+    - Update initramfs
+    - Reboot

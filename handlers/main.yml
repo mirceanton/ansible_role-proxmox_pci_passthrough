@@ -1,0 +1,12 @@
+---
+- name: Update GRUB
+  shell: update-grub
+
+- name: Update initramfs
+  shell: update-initramfs -u -k all
+
+- name: EFI Refresh
+  shell: proxmox-boot-tool refresh
+
+- name: Reboot
+  reboot:

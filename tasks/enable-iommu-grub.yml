@@ -1,0 +1,16 @@
+---
+- name: Read current grub cmdline
+  shell: grep GRUB_CMDLINE_LINUX_DEFAULT /etc/default/grub
+  register: __cmdline__
+  changed_when: false
+  failed_when: false
+
+- name: Append new cmdline to grub
+  lineinfile:
+    dest: /etc/default/grub
+    regexp: 'GRUB_CMDLINE_LINUX_DEFAULT="(.*)"'
+    line: 'GRUB_CMDLINE_LINUX_DEFAULT="\1 {{ iommu_cmdline }}"'
+    backrefs: true
+  when: 'iommu_cmdline not in __cmdline__.stdout'
+  notify:
+    - Update GRUB
