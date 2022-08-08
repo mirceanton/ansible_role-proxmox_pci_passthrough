@@ -20,10 +20,11 @@ Role Variables
 
 *Optional Variables*:
 
-|      Variable       |                      Default                      |           Description            |
-| :-----------------: | :-----------------------------------------------: | :------------------------------: |
-|   `vfio_modules`    | `[vfio, vfio_iommu_type1, vfio_pci, vfio_virqfd]` | A list of kernel modules to load |
-| `blacklist_drivers` |            `[nvidia, nouveau, radeon]`            |  A list of drivers to blacklist  |
+|      Variable       |                      Default                      |                                 Description                                 |
+| :-----------------: | :-----------------------------------------------: | :-------------------------------------------------------------------------: |
+|   `vfio_modules`    | `[vfio, vfio_iommu_type1, vfio_pci, vfio_virqfd]` |                      A list of kernel modules to load                       |
+| `blacklist_drivers` |            `[nvidia, nouveau, radeon]`            |                       A list of drivers to blacklist                        |
+|      `gpu_ids`      |                    `UNDEFINED`                    | A comma separated list of pci ids for the GPUs that will be passed through. |
 
 Dependencies
 ------------
@@ -42,7 +43,9 @@ Example Playbook
     - role: proxmox-pci-passthrough
       vars:
         cpu_type: intel
+        extra_cmdline: pcie_acs_override=downstream pcie_acs_override=multifunction nofb nomodeset video=vesafb:off video=efifb:off
         boot: systemd
+        gpu_ids: 10de:1e84,10de:10f8,10de:1ad8,10de:1ad9,10de:1c81,10de:0fb9
 ```
 
 MIT
