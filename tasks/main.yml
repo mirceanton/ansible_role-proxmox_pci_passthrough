@@ -1,2 +1,5 @@
 ---
-# tasks file for proxmox-pci-passthrough/
+- import_tasks: enable-iommu.yml
+- import_tasks: vfio-modules.yml
+- import_tasks: interrupt-remapping.yml
+- import_tasks: driver-blacklist.yml
