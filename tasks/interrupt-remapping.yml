@@ -1,0 +1,18 @@
+---
+- name: Allow unsafe interrupts
+  lineinfile:
+    path: /etc/modprobe.d/iommu_unsafe_interrupts.conf
+    line: options vfio_iommu_type1 allow_unsafe_interrupts=1
+    create: true
+  notify:
+    - Update initramfs
+    - Reboot
+
+- name: Ignore msrs
+  lineinfile:
+    path: /etc/modprobe.d/kvm.conf
+    line: options kvm ignore_msrs=1
+    create: true
+  notify:
+    - Update initramfs
+    - Reboot
