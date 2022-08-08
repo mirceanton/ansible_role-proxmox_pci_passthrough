@@ -1,0 +1,8 @@
+---
+- name: Build custom iommu cmdline
+  set_fact:
+    iommu_cmdline: "{{ cpu_type }}_iommu=on iommu=pt {{ extra_cmdline | default('') }}"
+
+- import_tasks: "enable-iommu-{{ boot }}.yml"
+
+- meta: flush_handlers
