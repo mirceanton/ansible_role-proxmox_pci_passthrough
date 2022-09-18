@@ -1,6 +1,6 @@
 ---
 - name: Load VFIO modules
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/modules
     line: "{{ item }}"
   loop: "{{ vfio_modules }}"

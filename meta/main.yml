@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: proxmox-pci-passthrough
+  role_name: proxmox_pci_passthrough
 
   author: Mircea-Pavel ANTON
   description: An ansible role that configure pci passthrough on a Proxmox host.
@@ -8,17 +8,21 @@ galaxy_info:
   issue_tracker_url: https://github.com/Amir-Homelab/ansible-role_proxmox-pci-passthrough/issues
 
   license: license (MIT)
-
-  min_ansible_version: 2.1
+  standalone: true
+  min_ansible_version: "2.1"
 
   platforms:
     - name: Proxmox VE
       versions:
-        - 7.2-7
+        - 7.2
+        - 7.1
+        - 6.4
 
   galaxy_tags:
-    - Proxmox
-    - PCIe Passthrough
-    - GPU
+    - proxmox
+    - gpupassthrough
+    - pcie
+    - pciepassthrough
+    - gpu
 
 dependencies: []

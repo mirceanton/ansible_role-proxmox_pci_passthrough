@@ -1,12 +1,12 @@
 ---
 - name: Update GRUB
-  shell: update-grub
+  ansible.builtin.command: update-grub
 
 - name: Update initramfs
-  shell: update-initramfs -u -k all
+  ansible.builtin.command: update-initramfs -u -k all
 
 - name: EFI Refresh
-  shell: proxmox-boot-tool refresh
+  ansible.builtin.command: proxmox-boot-tool refresh
 
 - name: Reboot
-  reboot:
+  ansible.builtin.reboot:

@@ -1,21 +1,22 @@
 ---
 - name: Read current cmdline
-  shell: cat /etc/kernel/cmdline
+  ansible.builtin.command: cat /etc/kernel/cmdline
   register: __cmdline__
   changed_when: false
   failed_when: false
 
-- block:
+- name: Update grub cmdline
+  block:
     - name: Remove the current cmdline
-      file:
+      ansible.builtin.file:
         path: /etc/kernel/cmdline
         state: absent
 
     - name: Write the new cmdline
-      lineinfile:
+      ansible.builtin.lineinfile:
         path: /etc/kernel/cmdline
         line: "{{ __cmdline__.stdout }} {{ iommu_cmdline }}"
         create: true
-  when: 'iommu_cmdline not in __cmdline__.stdout'
+  when: "iommu_cmdline not in __cmdline__.stdout"
   notify:
     - EFI Refresh

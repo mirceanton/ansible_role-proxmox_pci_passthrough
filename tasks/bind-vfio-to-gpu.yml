@@ -1,6 +1,6 @@
 ---
 - name: Add GPU to VFIO
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/modprobe.d/vfio.conf
     line: "options vfio-pci ids={{ gpu_ids }} disable_vga=1"
     create: true
