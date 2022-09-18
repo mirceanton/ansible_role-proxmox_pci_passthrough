@@ -40,7 +40,7 @@ Example Playbook
   remote_user: root
 
   roles:
-    - role: proxmox-pci-passthrough
+    - role: mirceanton.proxmox_pci_passthrough
       vars:
         cpu_type: intel
         extra_cmdline: pcie_acs_override=downstream pcie_acs_override=multifunction nofb nomodeset video=vesafb:off video=efifb:off
