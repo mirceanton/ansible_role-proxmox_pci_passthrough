@@ -3,4 +3,4 @@
 - import_tasks: vfio-modules.yml
 - import_tasks: interrupt-remapping.yml
 - import_tasks: driver-blacklist.yml
-- import_tasks: bind-vfio-to-gpu.yml
+- import_tasks: disable-vga.yml

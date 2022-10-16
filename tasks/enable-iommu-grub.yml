@@ -9,8 +9,8 @@
   ansible.builtin.lineinfile:
     dest: /etc/default/grub
     regexp: 'GRUB_CMDLINE_LINUX_DEFAULT="(.*)"'
-    line: 'GRUB_CMDLINE_LINUX_DEFAULT="\1 {{ iommu_cmdline }}"'
+    line: 'GRUB_CMDLINE_LINUX_DEFAULT="\1 {{ proxmox_pci_passthrough_iommu_cmdline }}"'
     backrefs: true
-  when: "iommu_cmdline not in __cmdline__.stdout"
+  when: "proxmox_pci_passthrough_iommu_cmdline not in __cmdline__.stdout"
   notify:
     - Update GRUB
