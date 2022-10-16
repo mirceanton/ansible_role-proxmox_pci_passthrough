@@ -1,6 +1,0 @@
----
-- name: Build custom iommu cmdline
-  ansible.builtin.set_fact:
-    proxmox_pci_passthrough_iommu_cmdline: "{{ proxmox_pci_passthrough_cpu_type }}_iommu=on iommu=pt {{ proxmox_pci_passthrough_extra_cmdline | default('') }}"
-
-- import_tasks: "enable-iommu-{{ proxmox_pci_passthrough_boot_type }}.yml"

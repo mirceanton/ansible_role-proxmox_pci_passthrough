@@ -1,11 +1,6 @@
 ---
-vfio_modules:
+proxmox_pci_passthrough_vfio_modules:
   - vfio
   - vfio_iommu_type1
   - vfio_pci
   - vfio_virqfd
-
-blacklist_drivers:
-  - nvidia
-  - nouveau
-  - radeon
