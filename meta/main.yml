@@ -1,7 +1,7 @@
 galaxy_info:
-  role_name: proxmox_pci_passthrough
-
   author: Mircea-Pavel ANTON
+  namespace: mirceanton
+  role_name: proxmox_pci_passthrough
   description: An ansible role that configure pci passthrough on a Proxmox host.
   company: mirceanton
 

@@ -15,8 +15,8 @@
     - name: Write the new cmdline
       ansible.builtin.lineinfile:
         path: /etc/kernel/cmdline
-        line: "{{ __cmdline__.stdout }} {{ iommu_cmdline }}"
+        line: "{{ __cmdline__.stdout }} {{ proxmox_pci_passthrough_iommu_cmdline }}"
         create: true
-  when: "iommu_cmdline not in __cmdline__.stdout"
+  when: "proxmox_pci_passthrough_iommu_cmdline not in __cmdline__.stdout"
   notify:
     - EFI Refresh

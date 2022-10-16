@@ -1,6 +1,6 @@
 ---
-- import_tasks: enable-iommu.yml
+- import_tasks: "enable-iommu-{{ proxmox_pci_passthrough_boot_type }}.yml"
 - import_tasks: vfio-modules.yml
 - import_tasks: interrupt-remapping.yml
 - import_tasks: driver-blacklist.yml
-- import_tasks: bind-vfio-to-gpu.yml
+- import_tasks: disable-vga.yml

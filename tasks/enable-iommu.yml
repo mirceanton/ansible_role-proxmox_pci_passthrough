@@ -1,9 +1,0 @@
----
-- name: Build custom iommu cmdline
-  ansible.builtin.set_fact:
-    iommu_cmdline: "{{ cpu_type }}_iommu=on iommu=pt {{ extra_cmdline | default('') }}"
-
-- import_tasks: "enable-iommu-{{ boot }}.yml"
-
-- name: Run handlers
-  ansible.builtin.meta: flush_handlers

@@ -5,7 +5,7 @@
     line: "blacklist {{ item }}"
     create: true
     mode: u=rw,g=r,o=r
-  loop: "{{ blacklist_drivers }}"
+  loop: "{{ proxmox_pci_passthrough_blacklist_drivers }}"
   notify:
     - Update initramfs
     - Reboot
