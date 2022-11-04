@@ -1,6 +1,28 @@
 ---
-- import_tasks: "enable-iommu.yml"
-- import_tasks: vfio-modules.yml
-- import_tasks: interrupt-remapping.yml
-- import_tasks: driver-blacklist.yml
-- import_tasks: disable-vga.yml
+- name: Disable VGA for GPU
+  when: proxmox_pci_passthrough_gpu_ids is defined
+  ansible.builtin.lineinfile:
+    path: /etc/modprobe.d/vfio.conf
+    line: "options vfio-pci ids={{ proxmox_pci_passthrough_gpu_ids }} disable_vga=1"
+    create: true
+  notify:
+    - Update initramfs
+    - Reboot
+
+- name: Allow unsafe interrupts
+  ansible.builtin.lineinfile:
+    path: /etc/modprobe.d/iommu_unsafe_interrupts.conf
+    line: options vfio_iommu_type1 allow_unsafe_interrupts=1
+    create: true
+  notify:
+    - Update initramfs
+    - Reboot
+
+- name: Ignore msrs
+  ansible.builtin.lineinfile:
+    path: /etc/modprobe.d/kvm.conf
+    line: options kvm ignore_msrs=1
+    create: true
+  notify:
+    - Update initramfs
+    - Reboot

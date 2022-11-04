@@ -20,9 +20,11 @@ galaxy_info:
 
   galaxy_tags:
     - proxmox
-    - gpupassthrough
-    - pcie
-    - pciepassthrough
     - gpu
+    - passthrough
 
-dependencies: []
+dependencies:
+  - role: proxmox_iommu
+  - role: proxmox_vfio
+  - role: proxmox_driver_blacklist
+
