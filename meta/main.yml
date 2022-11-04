@@ -27,4 +27,3 @@ dependencies:
   - role: proxmox_iommu
   - role: proxmox_vfio
   - role: proxmox_driver_blacklist
-
