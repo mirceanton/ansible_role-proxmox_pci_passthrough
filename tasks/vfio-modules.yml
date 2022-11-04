@@ -1,9 +1,0 @@
----
-- name: Load VFIO modules
-  ansible.builtin.lineinfile:
-    path: /etc/modules
-    line: "{{ item }}"
-  loop: "{{ proxmox_pci_passthrough_vfio_modules }}"
-  notify:
-    - Update initramfs
-    - Reboot
