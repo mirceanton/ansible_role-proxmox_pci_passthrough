@@ -24,6 +24,9 @@ galaxy_info:
     - passthrough
 
 dependencies:
-  - role: proxmox_iommu
-  - role: proxmox_vfio
-  - role: proxmox_driver_blacklist
+  - role: mirceanton.proxmox_iommu
+    version: v1.0.1
+  - role: mirceanton.proxmox_vfio
+    version: v1.0.0
+  - role: mirceanton.proxmox_driver_blacklist
+    version: v1.0.0

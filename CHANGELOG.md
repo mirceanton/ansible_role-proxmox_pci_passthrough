@@ -1,5 +1,9 @@
 # Changelog
 
+## v3.0.1
+
+* Specify versions for dependencies.
+
 ## v3.0.0
 
 * Migrated most of the tasks to dedicated roles included as dependencies => some variable names have changed
