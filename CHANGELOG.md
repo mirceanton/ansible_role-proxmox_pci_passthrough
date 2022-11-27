@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.0.2
+
+* Updated `mirceanton.proxmox_iommu` to `v1.0.2`
+* Tested on PVE 7.3
+
 ## v3.0.1
 
 * Specify versions for dependencies.
